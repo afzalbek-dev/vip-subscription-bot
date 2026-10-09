@@ -1,0 +1,16 @@
+services:
+  vip-subscription-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vip_subscription_bot
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+      - ADMIN_IDS=${ADMIN_IDS}
+      - VIP_CHANNEL_ID=${VIP_CHANNEL_ID}
+      - DATABASE_URL=sqlite:///app/data/vip_bot.db
+      - APP_ENV=production
+    volumes:
+      - ./data:/app/data
+      - ./receipts:/app/receipts
+    restart: unless-stopped

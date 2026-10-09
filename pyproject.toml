@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vip-subscription-bot"
+version = "1.0.0"
+description = "Production-grade Telegram VIP Channel Subscription Management Bot"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Afzalbek", email = "afzalbek-dev@users.noreply.github.com"}
+]
+keywords = ["telegram", "bot", "aiogram", "subscription", "vip", "channel-management", "payments"]
+dependencies = [
+    "aiogram>=3.15.0",
+    "pydantic>=2.0.0",
+    "python-dotenv>=1.0.0",
+    "aiosqlite>=0.19.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-mock>=3.12.0",
+    "ruff>=0.3.0",
+]
+
+[project.scripts]
+vip-bot = "vip_bot.main:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+asyncio_mode = "auto"
+addopts = "-v"
